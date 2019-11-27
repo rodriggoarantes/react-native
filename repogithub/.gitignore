@@ -65,7 +65,7 @@ yarn.lock
 build/
 
 node_modules/**/*
-.expo/*
+
 npm-debug.*
 *.jks
 *.p8
@@ -78,3 +78,7 @@ web-report/
 
 # macOS
 .DS_Store
+
+#EXPO
+.expo/*
+.expo-shared/*
