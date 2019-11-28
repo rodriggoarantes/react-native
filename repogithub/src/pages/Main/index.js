@@ -1,28 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { Alert, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import * as HomeActions from '../../store/modules/home/actions';
+import api from '../../services/api';
 
 import { Container, Form, Input, SubmitButton } from './styles';
 
 export default function Main() {
-  const dispatch = useDispatch();
-  const [count, setCount] = useState(0);
-
-  const counter = useSelector(state => state.counter);
+  const [users, setUsers] = useState([]);
+  const [newUser, setNewUser] = useState('');
 
   useEffect(() => {
     async function loadStart() {
-      setCount(2000);
+      setUsers([...users]);
     }
     loadStart();
   }, []);
 
-  function handlePlusCount() {
-    dispatch(HomeActions.updateAmountRequest(1));
+  async function handleSubmit() {
+    try {
+      const response = await api.get(`/users/${newUser}`);
+
+      const data = {
+        name: response.data.name,
+        login: response.data.login,
+        bio: response.data.bio,
+        avatar: response.data.avatar_url,
+      };
+
+      setUsers([...users, data]);
+
+      Alert.alert('Usuario', 'Usuario adicionado com sucesso');
+      Keyboard.dismiss();
+    } catch (error) {
+      Alert.alert('Usuario', 'Erro ao adicionar o usuario');
+    }
   }
 
   return (
@@ -33,12 +45,14 @@ export default function Main() {
             autoCorrect={false}
             autoCapttalize="none"
             placeholder="Adicionar usuário"
+            value={newUser}
+            onChangeText={text => setNewUser(text)}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onClick={() => handlePlusCount()}>
+          <SubmitButton onPress={handleSubmit}>
             <Icon name="add" size={20} color="#FFF" />
           </SubmitButton>
-          <Text>{counter}</Text>
-          <Text>{count}</Text>
         </Form>
       </Container>
     </>
