@@ -5,7 +5,7 @@ import { updateAmountSuccess } from './actions';
 
 function* counter({ count }) {
   Alert.alert('Atualizando quantidade');
-  const plus = count + 1;
+  const plus = count + 1000;
   yield put(updateAmountSuccess(plus));
 }
 

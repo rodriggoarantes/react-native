@@ -10,13 +10,13 @@ import { Container, Form, Input, SubmitButton } from './styles';
 
 export default function Main() {
   const dispatch = useDispatch();
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState(0);
 
   const counter = useSelector(state => state.counter);
 
   useEffect(() => {
     async function loadStart() {
-      setCount(1000);
+      setCount(2000);
     }
     loadStart();
   }, []);
