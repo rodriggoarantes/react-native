@@ -2,15 +2,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Main from './pages/Main';
-import User, { navigationOptions } from './pages/User';
+import User from './pages/User';
+import Repository from './pages/Repository';
 
 const AppNavigator = createStackNavigator(
   {
     Main,
-    User: {
-      screen: User,
-      navigationOptions,
-    },
+    User,
+    Repository,
   },
   {
     headerLayoutPreset: 'center',
