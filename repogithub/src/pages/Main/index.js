@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Keyboard, ActivityIndicator, AsyncStorage } from 'react-native';
+
+import Reactotron from 'reactotron-react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api';
 
@@ -24,16 +27,24 @@ export default function Main() {
 
   useEffect(() => {
     async function loadStart() {
-      setUsers([]);
+      const usersStore = await AsyncStorage.getItem('users');
+      if (usersStore) {
+        setUsers(JSON.parse(usersStore));
+      }
     }
     loadStart();
   }, []);
 
   useEffect(() => {
-    AsyncStorage.setItem('users', JSON.stringify(users));
+    Reactotron.log('effect-users-call');
+    if (users && users.length > 0) {
+      Reactotron.log('effect-users-has');
+      AsyncStorage.setItem('users', JSON.stringify(users));
+    }
   }, [users]);
 
   const handleSubmit = useCallback(async () => {
+    Reactotron.log('handleSubmit');
     if (newUser && newUser !== '') {
       const exist = users.filter(u => u && u.login && u.login === newUser)
         .length;
