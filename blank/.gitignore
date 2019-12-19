@@ -63,3 +63,22 @@ yarn.lock
 
 # Build Productions
 build/
+
+node_modules/**/*
+
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
+
+# macOS
+.DS_Store
+
+#EXPO
+.expo/*
+.expo-shared/*
