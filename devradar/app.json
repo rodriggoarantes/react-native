@@ -1,0 +1,32 @@
+{
+  "name": "DevRadar",
+  "displayName": "DevRadar",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "icon": "./assets/icon.png",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "updates": {
+    "fallbackToCacheTimeout": 0
+  },
+  "assetBundlePatterns": ["**/*"],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "br.com.r1.gobarber"
+  },
+  "android": {
+    "package": "br.com.r1.gobarber"
+  },
+  "expo": {
+    "name": "DevRadar",
+    "slug": "expo-template-bare",
+    "privacy": "unlisted",
+    "sdkVersion": "36.0.0",
+    "version": "1.0.0",
+    "entryPoint": "node_modules/expo/AppEntry.js",
+    "platforms": ["ios", "android"]
+  }
+}
