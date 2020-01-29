@@ -24,6 +24,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react-native/no-raw-text': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-unresolved': ['error', { ignore: '@expo/' }],
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'global-require': 'off',
     'no-param-reassign': 'off',
