@@ -16,7 +16,12 @@ export const SearchInput = styled.TextInput`
   border-radius: 25px;
   padding: 0 20px;
   font-size: 16px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  shadow-color: #000;
+  shadow-offset: 0px 4px;
+  shadow-opacity: 0.2;
+  shadow-radius: 2px;
+  elevation: 4;
 `;
 export const SearchButton = styled.TouchableOpacity`
   width: 50px;
