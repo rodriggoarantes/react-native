@@ -14,11 +14,13 @@
   },
   "assetBundlePatterns": ["**/*"],
   "ios": {
-    "supportsTablet": true,
-    "bundleIdentifier": "br.com.r1.gobarber"
+    "supportsTablet": false,
+    "bundleIdentifier": "br.com.r1.gobarber",
+    "buildNumber": "1.0.0"
   },
   "android": {
-    "package": "br.com.r1.gobarber"
+    "package": "br.com.r1.gobarber",
+    "versionCode": 1
   },
   "expo": {
     "name": "DevRadar",

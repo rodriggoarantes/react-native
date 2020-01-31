@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
 import {
   requestPermissionsAsync,
   getCurrentPositionAsync,
@@ -19,9 +20,16 @@ import {
   DevTechs,
 } from './styles';
 
+import { DevContext } from '~/services/context';
+
 export default function Main({ navigation }) {
   const [loading, setLoading] = useState(true);
+  const [devs, setDevs] = useState([]);
   const [region, setRegion] = useState(null);
+
+  const onDevsCallback = list => {
+    setDevs(list);
+  };
 
   useEffect(() => {
     async function loadLocation() {
@@ -48,35 +56,46 @@ export default function Main({ navigation }) {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <DevContext.Provider
+          value={{
+            latitude: region.latitude,
+            longitude: region.longitude,
+            callback: onDevsCallback,
+          }}
+        >
           <Map initialRegion={region}>
-            <Marker
-              coordinate={{ latitude: -16.6831532, longitude: -49.2562319 }}
-            >
-              <Avatar
-                source={{
-                  uri: 'https://api.adorable.io/avatars/50/adorable.png',
-                }}
-              />
-              <Callout
-                onPress={() => {
-                  navigation.navigate('Profile', {
-                    github_username: 'rodriggoarantes',
-                  });
+            {devs.map(dev => (
+              <Marker
+                key={dev.id}
+                coordinate={{
+                  latitude: dev.location.geopoint._latitude,
+                  longitude: dev.location.geopoint._longitude,
                 }}
               >
-                <Ballon>
-                  <DevName>Rodrigo Arantes</DevName>
-                  <DevBio>
-                    CTO R1 Tec, apaixonado por cerveja e tecnologia
-                  </DevBio>
-                  <DevTechs>ReactJS, React Native, Java</DevTechs>
-                </Ballon>
-              </Callout>
-            </Marker>
+                <Avatar
+                  source={{
+                    uri: dev.avatarUrl,
+                  }}
+                />
+                <Callout
+                  onPress={() => {
+                    const username = dev.githubUsername;
+                    navigation.navigate('Profile', {
+                      github_username: username,
+                    });
+                  }}
+                >
+                  <Ballon>
+                    <DevName>{dev.name}</DevName>
+                    <DevBio>{dev.bio}</DevBio>
+                    <DevTechs>{dev.techs && dev.techs.join(',')}</DevTechs>
+                  </Ballon>
+                </Callout>
+              </Marker>
+            ))}
           </Map>
           <Form />
-        </>
+        </DevContext.Provider>
       )}
     </Container>
   );

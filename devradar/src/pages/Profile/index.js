@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
-import { Container } from '~/components/Container';
+import Container from '~/components/Container';
 
-export default function Profile({ navigation }) {
+function Profile({ navigation }) {
   const gitHubUsername = navigation.getParam('github_username');
   return (
     <Container>
@@ -25,3 +25,5 @@ Profile.propTypes = {
     getParam: PropTypes.func.isRequired,
   }).isRequired,
 };
+
+export default Profile;

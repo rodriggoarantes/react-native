@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Container, SearchInput, SearchButton } from './styles';
 
+import { DevContext } from '~/services/context';
+import api from '~/services/api';
+
 export default function Form() {
+  const [techs, setTechs] = useState('');
+  const { callback, latitude, longitude } = useContext(DevContext);
+
+  const loadDevs = async () => {
+    if (techs) {
+      const response = await api.post('/search', {
+        latitude,
+        longitude,
+        techs,
+      });
+
+      callback(response.data);
+    }
+    Keyboard.dismiss();
+  };
+
   return (
     <Container>
       <SearchInput
@@ -10,13 +30,16 @@ export default function Form() {
         placeholderTextColor="#999"
         autoCapitalize="words"
         autoCorrect={false}
+        onChangeText={text => setTechs(text)}
       />
       <SearchButton>
         <MaterialIcons
           name="my-location"
           size={20}
           color="#FFF"
-          onPress={() => {}}
+          onPress={() => {
+            loadDevs();
+          }}
         />
       </SearchButton>
     </Container>
