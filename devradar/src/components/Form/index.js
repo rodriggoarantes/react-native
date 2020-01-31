@@ -11,6 +11,7 @@ export default function Form() {
   const { callback, latitude, longitude } = useContext(DevContext);
 
   const loadDevs = async () => {
+    console.log(`latlong: ${latitude}|${longitude}`);
     if (techs) {
       const response = await api.post('/search', {
         latitude,

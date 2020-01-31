@@ -31,6 +31,11 @@ export default function Main({ navigation }) {
     setDevs(list);
   };
 
+  const onRegionChange = region => {
+    console.log('regionChange');
+    setRegion(region);
+  };
+
   useEffect(() => {
     async function loadLocation() {
       const { granted } = await requestPermissionsAsync();
@@ -63,7 +68,7 @@ export default function Main({ navigation }) {
             callback: onDevsCallback,
           }}
         >
-          <Map initialRegion={region}>
+          <Map initialRegion={region} onRegionChangeComplete={onRegionChange}>
             {devs.map(dev => (
               <Marker
                 key={dev.id}
