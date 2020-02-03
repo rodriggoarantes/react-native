@@ -12,6 +12,9 @@ export default function Form() {
 
   const loadDevs = async () => {
     console.log(`latlong: ${latitude}|${longitude}`);
+
+    Keyboard.dismiss();
+
     if (techs) {
       const response = await api.post('/search', {
         latitude,
@@ -20,8 +23,9 @@ export default function Form() {
       });
 
       callback(response.data);
+    } else {
+      callback([]);
     }
-    Keyboard.dismiss();
   };
 
   return (

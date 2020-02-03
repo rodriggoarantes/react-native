@@ -32,7 +32,6 @@ export default function Main({ navigation }) {
   };
 
   const onRegionChange = region => {
-    console.log('regionChange');
     setRegion(region);
   };
 
