@@ -2,10 +2,10 @@ import React from 'react';
 import { Container } from '~/components/Container';
 import { Hello } from './styles';
 
-export default function Main() {
+export default function Book() {
   return (
     <Container>
-      <Hello>HELLO APP BLANK</Hello>
+      <Hello>Book</Hello>
     </Container>
   );
 }

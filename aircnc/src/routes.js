@@ -1,29 +1,26 @@
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Main from '~/pages/Main';
+import Login from '~/pages/Login';
+import Spots from '~/pages/Spots';
+import Book from '~/pages/Book';
 
 const Routes = createAppContainer(
-  createStackNavigator(
-    {
-      Main: {
-        screen: Main,
-        navigationOptions: {
-          title: 'AirCNC',
-          headerTitleAlign: 'center',
+  createSwitchNavigator({
+    Login,
+    App: createStackNavigator(
+      { Spots, Book },
+      {
+        defaultNavigationOptions: {
+          headerTintColor: '#FFF',
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: '#00838f',
+          },
         },
-      },
-    },
-    {
-      defaultNavigationOptions: {
-        headerTintColor: '#FFF',
-        headerBackTitleVisible: false,
-        headerStyle: {
-          backgroundColor: '#00838f',
-        },
-      },
-    }
-  )
+      }
+    ),
+  })
 );
 
 export default Routes;
