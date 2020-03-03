@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "aircnc",
-    "slug": "aircnc",
+    "name": "AirCNC",
+    "slug": "AirCNC",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android"],
@@ -18,7 +18,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "br.com.r1.aircnc",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "br.com.r1.aircnc",
+      "versionCode": 1
     }
   }
 }
