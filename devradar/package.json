@@ -1,8 +1,8 @@
 {
   "scripts": {
     "android": "expo start --android",
-    "web": "expo start --web",
-    "start": "expo start"
+    "start": "expo start",
+    "build:android": "expo build:android -t apk"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",

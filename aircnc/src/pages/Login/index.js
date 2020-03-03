@@ -32,7 +32,6 @@ export default function Login({ navigation }) {
       await AsyncStorage.setItem('user', id);
       await AsyncStorage.setItem('techs', techs);
 
-      Alert.alert('OK', 'Usuário logado com sucesso.');
       navigation.navigate('Spots');
     } else {
       Alert.alert('Atenção', 'Usuário não encontrado.');
