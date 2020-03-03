@@ -2,33 +2,38 @@
   "name": "DevRadar",
   "displayName": "DevRadar",
   "version": "1.0.0",
-  "orientation": "portrait",
-  "icon": "./assets/icon.png",
-  "splash": {
-    "image": "./assets/splash.png",
-    "resizeMode": "contain",
-    "backgroundColor": "#ffffff"
-  },
-  "updates": {
-    "fallbackToCacheTimeout": 0
-  },
-  "assetBundlePatterns": ["**/*"],
-  "ios": {
-    "supportsTablet": false,
-    "bundleIdentifier": "br.com.r1.gobarber",
-    "buildNumber": "1.0.0"
-  },
-  "android": {
-    "package": "br.com.r1.gobarber",
-    "versionCode": 1
-  },
   "expo": {
     "name": "DevRadar",
-    "slug": "expo-template-bare",
-    "privacy": "unlisted",
-    "sdkVersion": "36.0.0",
+    "slug": "DevRadar",
     "version": "1.0.0",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
     "entryPoint": "node_modules/expo/AppEntry.js",
-    "platforms": ["ios", "android"]
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#EFEFEF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "br.com.r1.devradar",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "br.com.r1.devradar",
+      "versionCode": 1
+    }
   }
 }
