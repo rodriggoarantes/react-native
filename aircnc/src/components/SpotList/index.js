@@ -1,0 +1,6 @@
+import React from 'react';
+import { Text } from 'react-native';
+
+export default function SpotList({ tech }) {
+  return <Text>{tech}</Text>;
+}

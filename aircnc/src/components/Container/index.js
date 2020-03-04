@@ -10,3 +10,8 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-items: center;
   padding: 0 30px;
 `;
+
+export const Safe = styled.SafeAreaView`
+  flex: 1;
+  margin-top: ${Platform.OS === 'android' ? '24px' : '0px'};
+`;

@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Hello = styled.Text`
-  display: flex;
-  align-items: center;
-  color: #005662;
-  font-size: 24px;
+export const Logo = styled.Image`
+  height: 32px;
+  resize-mode: contain;
+  align-self: center;
+  margin-top: 10px;
 `;
