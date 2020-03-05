@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Image, AsyncStorage, Alert } from 'react-native';
-import { Container } from '~/components/Container';
-import { Label, Form, Input, Button, ButtonText } from './styles';
+import { AsyncStorage, Alert } from 'react-native';
+
+import { Container, LogoFull } from '~/components/Container';
+import { Label, Form, Input, Button, ButtonText } from '~/components/Form';
 
 import api from '~/services/api';
-
-import logo from '~/assets/logo.png';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
@@ -40,7 +39,7 @@ export default function Login({ navigation }) {
 
   return (
     <Container>
-      <Image source={logo} />
+      <LogoFull />
       <Form>
         <Label>SEU E-MAIL *</Label>
         <Input

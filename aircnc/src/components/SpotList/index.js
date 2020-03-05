@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { withNavigation } from 'react-navigation';
+
 import {
   Container,
   Title,
@@ -15,8 +17,12 @@ import {
 
 import api from '~/services/api';
 
-export default function SpotList({ tech }) {
+function SpotList({ tech, navigation }) {
   const [spots, setSpots] = useState([]);
+
+  const handleNavigate = id => {
+    navigation.navigate('Book', { id });
+  };
 
   useEffect(() => {
     async function loadSpots() {
@@ -48,9 +54,9 @@ export default function SpotList({ tech }) {
             <SpotImage source={{ uri: item.thumbnail }} />
             <Company>{item.company}</Company>
             <Price>
-              {item.price && item.price > 0 ? `R$ ${item.price}` : 'FREE'}
+              {item.price && item.price > 0 ? `R$ ${item.price}/dia` : 'FREE'}
             </Price>
-            <Button>
+            <Button onPress={() => handleNavigate(item._id)}>
               <ButtonText>Solicitar reserva</ButtonText>
             </Button>
           </ListItem>
@@ -59,3 +65,5 @@ export default function SpotList({ tech }) {
     </Container>
   );
 }
+
+export default withNavigation(SpotList);

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage, ScrollView } from 'react-native';
 
-import { Safe } from '~/components/Container';
+import { Safe, Logo } from '~/components/Container';
 import SpotList from '~/components/SpotList';
 
 import { parseStringToArray } from '~/services/utils';
-
-import { Logo } from './styles';
-import logo from '~/assets/logo.png';
 
 export default function Spots() {
   const [techs, setTechs] = useState([]);
@@ -21,7 +18,7 @@ export default function Spots() {
 
   return (
     <Safe>
-      <Logo source={logo} />
+      <Logo />
       <ScrollView>
         {techs && techs.map(tech => <SpotList key={tech} tech={tech} />)}
       </ScrollView>
