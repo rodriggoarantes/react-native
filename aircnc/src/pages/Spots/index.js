@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, ScrollView } from 'react-native';
 
 import { Safe } from '~/components/Container';
 import SpotList from '~/components/SpotList';
@@ -22,7 +22,9 @@ export default function Spots() {
   return (
     <Safe>
       <Logo source={logo} />
-      {techs && techs.map(tech => <SpotList key={tech} tech={tech} />)}
+      <ScrollView>
+        {techs && techs.map(tech => <SpotList key={tech} tech={tech} />)}
+      </ScrollView>
     </Safe>
   );
 }
