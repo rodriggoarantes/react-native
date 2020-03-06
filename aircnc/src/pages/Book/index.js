@@ -1,23 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { AsyncStorage } from 'react-native';
+import React, { useState } from 'react';
+import { AsyncStorage, Alert } from 'react-native';
 
 import { Safe, Logo } from '~/components/Container';
-import { Form, Label, Button, ButtonText, Input } from '~/components/Form';
-import { Container, CancelButton } from './styles';
+import { Form, Label, Button, ButtonText } from '~/components/Form';
+
+import DateInput from '~/components/DateInput';
+
+import { Container, Info, CancelButton } from './styles';
+
+import { format } from 'date-fns';
+import api from '~/services/api';
 
 export default function Book({ navigation }) {
-  const [booking, setBooking] = useState('');
-  const id = navigation.getParam('id');
+  const [booking, setBooking] = useState(new Date());
+  const spotId = navigation.getParam('id');
 
-  const handleSubmit = () => {};
-  const handleCancel = () => {};
+  const handleSubmit = async () => {
+    const user_id = await AsyncStorage.getItem('user');
 
-  useEffect(() => {
-    AsyncStorage.getItem('user').then(user => {
-      if (user && id) {
-      }
-    });
-  }, [id]);
+    await api.post(
+      `/spots/${spotId}/bookings`,
+      { date: format(booking, 'yyyy-MM-dd') },
+      { headers: { user_id } }
+    );
+
+    Alert.alert('Solicitação de reserva realizada com sucesso');
+    navigation.navigate('Spots');
+  };
+
+  const handleCancel = () => {
+    navigation.navigate('Spots');
+  };
 
   return (
     <Safe>
@@ -25,14 +38,8 @@ export default function Book({ navigation }) {
       <Container>
         <Form>
           <Label>DATA DE INTERESSE *</Label>
-          <Input
-            placeholder="Qual data da reserva?"
-            placeholderTextColor="#999"
-            autoCapitalize="words"
-            autoCorrect={false}
-            value={booking}
-            onChangeText={text => setBooking(text)}
-          />
+          <Info>Escolha a data da reserva</Info>
+          <DateInput date={booking} onChange={setBooking} />
 
           <Button onPress={handleSubmit}>
             <ButtonText>Solicitar reserva</ButtonText>

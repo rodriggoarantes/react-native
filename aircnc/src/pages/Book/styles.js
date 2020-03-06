@@ -6,14 +6,12 @@ export const Container = styled.View`
   padding: 20px;
 `;
 
-export const Hello = styled.Text`
-  display: flex;
-  align-items: center;
-  color: #005662;
-  font-size: 24px;
-`;
-
 export const CancelButton = styled(Button)`
   background-color: #cecece;
   margin-top: 10px;
+`;
+
+export const Info = styled.Text`
+  color: #ccc;
+  font-size: 20px;
 `;
