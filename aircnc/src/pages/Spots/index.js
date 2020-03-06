@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage, ScrollView } from 'react-native';
+import { AsyncStorage, ScrollView, TouchableOpacity } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import SpotList from '~/components/SpotList';
 
 import { Safe, Logo } from '~/components/Container';
-import SpotList from '~/components/SpotList';
 
 import { parseStringToArray } from '~/services/utils';
 
@@ -25,3 +27,7 @@ export default function Spots() {
     </Safe>
   );
 }
+
+Spots.navigationOptions = ({ navigation }) => ({
+  title: '',
+});

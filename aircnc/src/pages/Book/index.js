@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { AsyncStorage, Alert } from 'react-native';
+import { AsyncStorage, Alert, TouchableOpacity } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import DateInput from '~/components/DateInput';
 
 import { Safe, Logo } from '~/components/Container';
 import { Form, Label, Button, ButtonText } from '~/components/Form';
-
-import DateInput from '~/components/DateInput';
-
 import { Container, Info, CancelButton } from './styles';
 
 import { format } from 'date-fns';
@@ -53,3 +53,16 @@ export default function Book({ navigation }) {
     </Safe>
   );
 }
+
+Book.navigationOptions = ({ navigation }) => ({
+  title: '',
+  headerLeft: () => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Spots');
+      }}
+    >
+      <Icon name="chevron-left" size={20} color="#f00" />
+    </TouchableOpacity>
+  ),
+});
