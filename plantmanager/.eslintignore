@@ -1,4 +1,5 @@
 *.css
+*.png
 *.svg
 **/*.js
 node_modules

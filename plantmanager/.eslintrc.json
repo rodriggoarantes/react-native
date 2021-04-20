@@ -5,12 +5,12 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "universe/native",
     "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "universe/native",
     "airbnb",
     "prettier",
-    "prettier/react",
-    "plugin:react/recommended"
+    "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
