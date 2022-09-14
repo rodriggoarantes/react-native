@@ -1,0 +1,8 @@
+*.css
+*.png
+*.svg
+**/*.js
+node_modules
+build
+babel.config.js
+metro.config.js
